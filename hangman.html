@@ -25,17 +25,37 @@
 
     var answers = [];
     
-    for (var i =0; i < word.length; i++) {
+    for (var i = 0; i < word.length; i++) {
       answers[i] = "_";
     }
 
     var restLetters = word.length;
 
+// the main loop 
     while (restLetters > 0) {
+      //show the score
       alert(answers.join(" "));
+    
+
+    var choice = prompt("Add the letter or choose CANCEL to finish the game.");
+
+    if (choice === null) {
+      break;
+    } else if (choice.length !== 1) {
+      alert("Please add only one letter.");
+    } else {
+      //update the game based on user's choice
+      for (var j = 0; j < word.length; j++) {
+        if (word[j] === choice) {
+          answers[j] = choice;
+          restLetters--;
+        }
+      }
+    }
     }
 
-
+   alert(answers.join(" "));
+   alert("Good job! The answer is " + word);
 
   </script>
 
